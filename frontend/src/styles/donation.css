@@ -1,0 +1,257 @@
+.facility-card:hover {
+  transform: translateY(-5px);
+}
+
+.facility-info h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.facility-stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  color: #666;
+}
+
+.needs-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.need-tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+.need-tag.money { background: #e3f2fd; color: #1976d2; }
+.need-tag.food { background: #f1f8e9; color: #689f38; }
+.need-tag.clothes { background: #fff3e0; color: #f57c00; }
+.need-tag.books { background: #f3e5f5; color: #7b1fa2; }
+.need-tag.medical { background: #ffebee; color: #c62828; }
+.need-tag.volunteers { background: #e8f5e9; color: #2e7d32; }
+
+.donation-page {
+    padding: 3rem;
+    max-width: 800px; /* Increased from 600px */
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    min-height: 80vh;
+}
+
+/* Base donation form styles */
+.donation-form {
+    position: relative;
+    padding: 2.5rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    animation: formAppear 0.8s ease-out;
+    overflow: hidden;
+}
+
+/* Form background gradient animation */
+.donation-form::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        #FFB6C1 0%, /* pink */
+        #FFA07A 20%, /* light orange */
+        #98FB98 40%, /* light green */
+        #FF6B6B 60%, /* light red */
+        #FFD700 80%, /* yellow */
+        #87CEEB 100% /* sky blue */
+    );
+    background-size: 400% 400%;
+    opacity: 0.6;
+    z-index: -1;
+    animation: moveGradient 15s ease infinite;
+    transform-origin: center;
+}
+
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+        transform: rotate(0deg);
+    }
+    50% {
+        background-position: 100% 50%;
+        transform: rotate(180deg);
+    }
+    100% {
+        background-position: 0% 50%;
+        transform: rotate(360deg);
+    }
+}
+
+/* Remove previous color themes since we're using one unified theme */
+div[class*="money"] .donation-form,
+div[class*="food"] .donation-form,
+div[class*="clothes"] .donation-form,
+div[class*="books"] .donation-form,
+div[class*="health"] .donation-form {
+    --color1: transparent;
+    --color2: transparent;
+    --color3: transparent;
+    --color4: transparent;
+}
+
+/* Form elements styling for better visibility */
+/* Form Group Styles */
+.form-group {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+/* Label Styles */
+.form-group label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #2d3748;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+}
+
+/* Input and Textarea Styles */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #2d3748;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+/* Placeholder Styles */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #4a5568;
+    opacity: 0.7;
+}
+
+/* Focus States */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+/* Select Element Styles */
+.form-group select {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #2d3748;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232d3748' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    font-weight: 500;
+}
+
+/* Submit Button Styles */
+.submit-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.submit-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Required Field Indicator */
+.form-group label.required::after {
+    content: '*';
+    color: #e53e3e;
+    margin-left: 4px;
+}
+
+/* Error State */
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+    border-color: rgba(229, 62, 62, 0.5);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Success State */
+.form-group.success input,
+.form-group.success select,
+.form-group.success textarea {
+    border-color: rgba(72, 187, 120, 0.5);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Updated responsive styles */
+@media (max-width: 768px) {
+    .donation-page {
+        padding: 1.5rem;
+    }
+    
+    .donation-form {
+        padding: 2rem;
+    }
+    
+    .form-group {
+        padding: 1.2rem;
+    }
+    
+    .form-group label {
+        font-size: 1rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea,
+    .submit-btn {
+        font-size: 0.95rem;
+    }
+}

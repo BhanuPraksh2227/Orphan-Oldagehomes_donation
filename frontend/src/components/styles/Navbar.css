@@ -1,0 +1,41 @@
+.navbar {
+  background: linear-gradient(45deg, #1976d2, #64b5f6) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.title {
+  flex-grow: 1;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 16px;
+  margin-right: 16px;
+}
+
+.nav-button {
+  border-radius: 20px !important;
+  padding: 6px 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.menu-button {
+  margin-right: 16px !important;
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .menu-button {
+    display: block !important;
+  }
+  
+  .nav-buttons {
+    display: none;
+  }
+}

@@ -1,0 +1,24 @@
+/* .navbar {
+  background: linear-gradient(45deg, #1976d2, #64b5f6) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.navbar-title {
+  flex-grow: 1;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.navbar-buttons .MuiButton-root {
+  border-radius: 20px;
+  padding: 6px 16px;
+}
+
+.navbar-buttons .MuiButton-root:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+} */

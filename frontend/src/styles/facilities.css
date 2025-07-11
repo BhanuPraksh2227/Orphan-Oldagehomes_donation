@@ -1,0 +1,495 @@
+.facilities-page {
+    padding: 32px;
+    max-width: 1500px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #f9fafb 0%, #e2e8f0 100%);
+}
+
+.facilities-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.facilities-header h1 {
+    font-size: 3rem;
+    color: var(--primary-color, #2d3748);
+    margin-bottom: 32px;
+    font-weight: 800;
+    animation: fadeIn 1s ease;
+}
+
+.search-filters {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.search-input,
+.filter-select {
+    padding: 14px 24px;
+    border: 2px solid var(--border-color, #e2e8f0);
+    border-radius: 30px;
+    font-size: 1.05rem;
+    min-width: 250px;
+    transition: all 0.4s ease;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.search-input:focus,
+.filter-select:focus {
+    border-color: var(--primary-color, #4a90e2);
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.15);
+    transform: translateY(-2px);
+}
+
+.facilities-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 3rem;
+    display: grid;
+    gap: 3rem;
+}
+
+.facilities-container h1 {
+    color: #1a202c;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-size: 2.7rem;
+}
+
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+}
+
+.facility-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.facility-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: 250% 250%;
+    opacity: 0.2;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.facility-card:nth-child(4n+1)::before {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ffe66d 100%);
+}
+
+.facility-card:nth-child(4n+2)::before {
+    background: linear-gradient(135deg, #4ecdc4 0%, #556270 100%);
+}
+
+.facility-card:nth-child(4n+3)::before {
+    background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+}
+
+.facility-card:nth-child(4n+4)::before {
+    background: linear-gradient(135deg, #ffb7b2 0%, #ffdac1 100%);
+}
+
+.facility-card:hover::before {
+    opacity: 0.3;
+    background-size: 150% 150%;
+}
+
+.facility-header {
+    padding: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.facility-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+}
+
+.location {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    opacity: 0.9;
+    color: #718096;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.facility-details {
+    padding: 2.5rem;
+    flex-grow: 1;
+    color: #1a202c;
+}
+
+.capacity, .contact-info {
+    background: #f7fafc;
+    padding: 1.2rem;
+    border-radius: 10px;
+    margin: 1.2rem 0;
+}
+
+.contact-info {
+    background: #f8fafc;
+    padding: 1.8rem;
+    border-radius: 12px;
+    margin: 1.2rem 0;
+}
+
+.contact-info p {
+    margin: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.contact-info i {
+    margin-right: 0.75rem;
+    color: #4a5568;
+}
+
+.needs {
+    margin-top: 2rem;
+}
+
+.needs h3 {
+    font-size: 1.1rem;
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.needs-section {
+    margin: 2rem 0;
+}
+
+.needs-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.need-tag {
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.4s ease;
+}
+
+.need-tag.money {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: #fff;
+}
+
+.need-tag.books {
+    background: linear-gradient(135deg, #00bcd4, #03a9f4);
+    color: #fff;
+}
+
+.need-tag.clothes {
+    background: linear-gradient(135deg, #9c27b0, #673ab7);
+    color: #fff;
+}
+
+.need-tag.food {
+    background: linear-gradient(135deg, #4caf50, #8bc34a);
+    color: #fff;
+}
+
+.need-tag.health {
+    background: linear-gradient(135deg, #f44336, #e91e63);
+    color: #fff;
+}
+
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    margin: 1.2rem 0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+}
+
+.stat-value {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+.facility-footer {
+    padding: 2rem;
+    text-align: center;
+    background: #f8fafc;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.donate-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(90deg, #e6f3ff, #b6e3ff);
+    color: #4a5568;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-align: center;
+    font-weight: 600;
+}
+
+.donate-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.donate-btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    text-decoration: none;
+}
+
+.donate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.5);
+}
+
+.loading-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 450px;
+    font-size: 1.3rem;
+    color: var(--primary-color, #4a90e2);
+}
+
+.pending-donations {
+    margin-top: 2rem;
+    padding: 1.2rem;
+    background: #fff8e1;
+    border-radius: 10px;
+}
+
+.pending-donations h4 {
+    color: #f57c00;
+    margin-bottom: 1.2rem;
+    font-size: 1.2rem;
+}
+
+.donation-item {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+.donation-item:last-child {
+    border-bottom: none;
+}
+
+.donation-status {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.status-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.status-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.status-delivered {
+    color: #4caf50;
+    font-weight: 700;
+}
+
+.info-section {
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+}
+
+.info-section h3,
+.contact-info h3,
+.needs-section h3 {
+    color: #1a202c;
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    border-bottom: 2px solid rgba(74, 85, 104, 0.25);
+    padding-bottom: 0.6rem;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.2rem 0;
+}
+
+.features-list li {
+    padding: 0.6rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.features-list li::before {
+    content: '✓';
+    color: #4caf50;
+    font-weight: 700;
+}
+
+.education-section {
+    margin-top: 2rem;
+    background: rgba(144, 202, 249, 0.15);
+}
+
+.description {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #1a202c;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .facilities-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .facilities-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .facilities-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .facilities-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-filters {
+        flex-direction: column;
+    }
+    
+    .facility-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.orphanages-container {
+    padding: 24px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.orphanages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.orphanage-card {
+    background: white;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    transition: all 0.4s ease;
+}
+
+.orphanage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+button {
+    background: #4a90e2;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+}
+
+.facility-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.need-tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}

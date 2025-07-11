@@ -1,0 +1,55 @@
+:root {
+    --primary-color: #1976d2;
+    --secondary-color: #64b5f6;
+    --accent-color: #4caf50;
+    --error-color: #e53e3e;
+    --background-color: #f9fafb;
+    --text-color: #2d3748;
+    --border-color: #e2e8f0;
+    --dark-background: #1a202c;
+    --dark-text: #e2e8f0;
+    --dark-primary: #4299e1;
+}
+
+[data-theme="dark"] {
+    --background-color: var(--dark-background);
+    --text-color: var(--dark-text);
+    --primary-color: var(--dark-primary);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+button {
+    cursor: pointer;
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}

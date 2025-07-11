@@ -1,0 +1,38 @@
+.impact-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.impact-title {
+  margin-bottom: 24px !important;
+  color: #1976d2;
+  font-weight: 600 !important;
+}
+
+.impact-card {
+  padding: 20px;
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.impact-card h6 {
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.error-container {
+  padding: 24px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .impact-container {
+    padding: 16px;
+  }
+  
+  .impact-card {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,21 @@
+.notification-menu {
+  max-width: 360px;
+}
+
+.notification-item {
+  padding: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-message {
+  margin-bottom: 4px;
+}
+
+.notification-timestamp {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.6);
+}

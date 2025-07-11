@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&display=swap');
+
+* {
+    font-style: normal;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+body {
+    font-family: 'Cambria', 'Georgia', 'Times New Roman', Times, serif;
+    font-style: italic;
+    background: #f9fafb;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, span, a, button, input, textarea, label,
+.nav-button,
+.brand-name,
+.auth-header h1,
+.auth-header p,
+.form-group label,
+.profile-header h3,
+.profile-header p {
+    font-style: italic;
+}
+
+.brand-name {
+    font-style: normal;
+    font-weight: 800;
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
