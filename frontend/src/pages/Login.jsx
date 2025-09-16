@@ -20,6 +20,7 @@ const Login = () => {
 
         try {
             const response = await api.post('/auth/login', formData);
+            console.log('Login API response:', response.data);
 
             if (response.data?.token) {
                 // Make sure all user data is properly stored
@@ -38,6 +39,7 @@ const Login = () => {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('userData', JSON.stringify(userData));
                 setUser(userData);
+                console.log('User state after login:', userData);
                 navigate('/home');
             }
         } catch (err) {
@@ -59,7 +61,7 @@ const Login = () => {
         }
     }, []);
 
-    console.log(localStorage.getItem('userData'));
+    console.log('Stored userData:', localStorage.getItem('userData'));
 
     return (
         <div className="auth-page">
@@ -96,22 +98,27 @@ const Login = () => {
                             />
                         </div>
 
-                        <div className="form-group">
-                            <label>Name</label>
-                            <input type="text" value={user.name || ''} readOnly />
-                        </div>
-                        <div className="form-group">
-                            <label>Phone</label>
-                            <input type="text" value={user.phone || ''} readOnly />
-                        </div>
-                        <div className="form-group">
-                            <label>Address</label>
-                            <input type="text" value={user.address || ''} readOnly />
-                        </div>
-                        <div className="form-group">
-                            <label>Email</label>
-                            <input type="text" value={user.email || ''} readOnly />
-                        </div>
+                        {/* Show user details only if logged in */}
+                        {user.name && (
+                            <>
+                                <div className="form-group">
+                                    <label>Name</label>
+                                    <input type="text" value={user.name || ''} readOnly />
+                                </div>
+                                <div className="form-group">
+                                    <label>Phone</label>
+                                    <input type="text" value={user.phone || ''} readOnly />
+                                </div>
+                                <div className="form-group">
+                                    <label>Address</label>
+                                    <input type="text" value={user.address || ''} readOnly />
+                                </div>
+                                <div className="form-group">
+                                    <label>Email</label>
+                                    <input type="text" value={user.email || ''} readOnly />
+                                </div>
+                            </>
+                        )}
 
                         <button type="submit" className="submit-btn" disabled={loading}>
                             {loading ? 'Logging in...' : 'Login'}

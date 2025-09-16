@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
-import '../styles/facilities.css';
+import '../styles/oldAgeHomes.css';
 
 const OldAgeHomesPage = ({ onDonate }) => {
   const [homes, setHomes] = useState([]);
@@ -12,7 +12,6 @@ const OldAgeHomesPage = ({ onDonate }) => {
 
   useEffect(() => {
     fetchHomes();
-    // eslint-disable-next-line
   }, []);
 
   const fetchHomes = async () => {
@@ -22,7 +21,6 @@ const OldAgeHomesPage = ({ onDonate }) => {
       const homesList = response.data.filter(f => f.type === 'oldAgeHome');
       setHomes(homesList);
 
-      // Fetch donations for each old age home
       for (const home of homesList) {
         const res = await api.get(`/donations/facility/${home._id || home.id}`);
         setDonations(prev => ({ ...prev, [home._id || home.id]: res.data }));
@@ -37,10 +35,7 @@ const OldAgeHomesPage = ({ onDonate }) => {
   const handleDonateClick = (e, home) => {
     e.preventDefault();
     try {
-      // Store facility info
       sessionStorage.setItem('selectedFacility', JSON.stringify(home));
-      
-      // Call the onDonate prop to open sidebar
       if (onDonate) {
         onDonate(home);
       }
@@ -49,17 +44,37 @@ const OldAgeHomesPage = ({ onDonate }) => {
     }
   };
 
-  if (loading) return <div className="loading">Loading old age homes...</div>;
-  if (error) return <div className="error">{error}</div>;
+  if (loading) return (
+    <div className="loading" style={{ animation: "slideInUp 0.6s ease-out" }}>
+      <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>🏡</div>
+      Loading old age homes...
+    </div>
+  );
+  
+  if (error) return (
+    <div className="error" style={{ animation: "slideInUp 0.6s ease-out" }}>
+      <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>⚠️</div>
+      {error}
+    </div>
+  );
 
   return (
     <div className="facilities-container">
-      <h1>Old Age Homes</h1>
-      {homes.map(home => (
-        <div key={home._id || home.id} className="facility-card">
+      <h1>🏡 Old Age Homes</h1>
+      {homes.map((home, index) => (
+        <div 
+          key={home._id || home.id} 
+          className="facility-card"
+          style={{
+            animation: `slideInUp 0.6s ease-out ${index * 0.1}s both`
+          }}
+        >
           <div className="facility-header">
             <h2>{home.name}</h2>
-            <p className="location">{home.location?.city}, {home.location?.state}</p>
+            <p className="location">
+              <i className="fas fa-map-marker-alt"></i>
+              {home.location?.city}, {home.location?.state}
+            </p>
           </div>
           <div className="facility-details">
             <p>{home.description}</p>
@@ -67,11 +82,22 @@ const OldAgeHomesPage = ({ onDonate }) => {
             <div className="info-section">
               <h3>Facility Features</h3>
               <ul className="features-list">
-                <li>24/7 Medical Care Available</li>
-                <li>Nutritious Meals (3 times a day)</li>
-                <li>Regular Health Check-ups</li>
-                <li>Recreation Activities</li>
-                <li>Physiotherapy Services</li>
+                {[
+                  '24/7 Medical Care Available',
+                  'Nutritious Meals (3 times a day)',
+                  'Regular Health Check-ups',
+                  'Recreation Activities',
+                  'Physiotherapy Services'
+                ].map((feature, featureIndex) => (
+                  <li 
+                    key={`feature-${featureIndex}`}
+                    style={{
+                      animation: `fadeInUp 0.6s ease-out ${(index * 0.1) + (featureIndex * 0.1)}s both`
+                    }}
+                  >
+                    {feature}
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -85,10 +111,22 @@ const OldAgeHomesPage = ({ onDonate }) => {
             <div className="needs-section">
               <h3>Current Needs</h3>
               <div className="needs-tags">
-                <span className="need-tag money">Financial Support</span>
-                <span className="need-tag health">Medical Supplies</span>
-                <span className="need-tag clothes">Clothing</span>
-                <span className="need-tag food">Food Items</span>
+                {[
+                  { type: 'money', text: 'Financial Support', icon: '💰' },
+                  { type: 'health', text: 'Medical Supplies', icon: '🏥' },
+                  { type: 'clothes', text: 'Clothing', icon: '👕' },
+                  { type: 'food', text: 'Food Items', icon: '🍎' }
+                ].map((need, needIndex) => (
+                  <span 
+                    key={`need-${needIndex}`} 
+                    className={`need-tag ${need.type}`}
+                    style={{
+                      animation: `fadeInUp 0.6s ease-out ${(index * 0.1) + (needIndex * 0.1)}s both`
+                    }}
+                  >
+                    {need.icon} {need.text}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -109,7 +147,7 @@ const OldAgeHomesPage = ({ onDonate }) => {
               onClick={(e) => handleDonateClick(e, home)}
               type="button"
             >
-              Donate
+              💝 Donate Now
             </button>
           </div>
         </div>

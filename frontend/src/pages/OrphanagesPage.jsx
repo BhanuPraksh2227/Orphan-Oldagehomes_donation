@@ -31,7 +31,6 @@ const OrphanagesPage = ({ onDonate }) => {
           }));
         } catch (err) {
           console.error(`Failed to fetch donations for facility ${orphanage._id || orphanage.id}:`, err);
-          // Continue with other facilities even if one fails
         }
       }
     } catch (err) {
@@ -44,8 +43,6 @@ const OrphanagesPage = ({ onDonate }) => {
   const handleStatusUpdate = async (donationId) => {
     try {
         await api.put(`/donations/${donationId}/status`, { status: 'delivered' });
-        
-        // Refresh donations after status update
         fetchOrphanages();
     } catch (err) {
         console.error('Failed to update donation status:', err);
@@ -55,37 +52,40 @@ const OrphanagesPage = ({ onDonate }) => {
   const handleDonateClick = (e, facility) => {
     e.preventDefault();
     try {
-        // Store facility data
         sessionStorage.setItem('selectedFacility', JSON.stringify(facility));
-        // Call the onDonate prop to open sidebar
         if (onDonate) {
             onDonate(facility);
         }
     } catch (error) {
         console.error('Error in handleDonateClick:', error);
     }
-};
+  };
 
-  // Optimize donation fetching by using a Set to track unique IDs
-  useEffect(() => {
-    const fetchedIds = new Set();
-    
-    orphanages.forEach(orphanage => {
-        if (!fetchedIds.has(orphanage._id)) {
-            fetchedIds.add(orphanage._id);
-            // Your existing fetchDonations call here
-        }
-    });
-  }, [orphanages]);
-
-  if (loading) return <div className="loading">Loading orphanages...</div>;
-  if (error) return <div className="error">{error}</div>;
+  if (loading) return (
+    <div className="loading" style={{ animation: "slideInUp 0.6s ease-out" }}>
+      <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>🏠</div>
+      Loading orphanages...
+    </div>
+  );
+  
+  if (error) return (
+    <div className="error" style={{ animation: "slideInUp 0.6s ease-out" }}>
+      <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>⚠️</div>
+      {error}
+    </div>
+  );
 
   return (
     <div className="facilities-container">
-        <h1>Orphanages</h1>
-        {orphanages.map(facility => (
-            <div className="facility-card" key={facility._id}>
+        <h1>🏠 Orphanages</h1>
+        {orphanages.map((facility, index) => (
+            <div 
+                className="facility-card" 
+                key={facility._id}
+                style={{
+                    animation: `slideInUp 0.6s ease-out ${index * 0.1}s both`
+                }}
+            >
                 <div className="facility-header">
                     <h2>{facility.name}</h2>
                     <p className="location">
@@ -107,8 +107,15 @@ const OrphanagesPage = ({ onDonate }) => {
                                 'Regular Health Check-ups',
                                 'Recreational Activities',
                                 'Counseling Services'
-                            ].map((feature, index) => (
-                                <li key={`feature-${index}`}>{feature}</li>
+                            ].map((feature, featureIndex) => (
+                                <li 
+                                    key={`feature-${featureIndex}`}
+                                    style={{
+                                        animation: `fadeInUp 0.6s ease-out ${(index * 0.1) + (featureIndex * 0.1)}s both`
+                                    }}
+                                >
+                                    {feature}
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -124,17 +131,20 @@ const OrphanagesPage = ({ onDonate }) => {
                         <h3>Current Needs</h3>
                         <div className="needs-tags">
                             {[
-                                { type: 'money', text: 'Financial Support' },
-                                { type: 'books', text: 'Educational Materials' },
-                                { type: 'clothes', text: 'Children\'s Clothing' },
-                                { type: 'food', text: 'Nutritional Support' },
-                                { type: 'health', text: 'Healthcare Supplies' }
-                            ].map((need, index) => (
+                                { type: 'money', text: 'Financial Support', icon: '💰' },
+                                { type: 'books', text: 'Educational Materials', icon: '📚' },
+                                { type: 'clothes', text: 'Children\'s Clothing', icon: '👕' },
+                                { type: 'food', text: 'Nutritional Support', icon: '🍎' },
+                                { type: 'health', text: 'Healthcare Supplies', icon: '🏥' }
+                            ].map((need, needIndex) => (
                                 <span 
-                                    key={`need-${index}`} 
+                                    key={`need-${needIndex}`} 
                                     className={`need-tag ${need.type}`}
+                                    style={{
+                                        animation: `fadeInUp 0.6s ease-out ${(index * 0.1) + (needIndex * 0.1)}s both`
+                                    }}
                                 >
-                                    {need.text}
+                                    {need.icon} {need.text}
                                 </span>
                             ))}
                         </div>
@@ -154,17 +164,6 @@ const OrphanagesPage = ({ onDonate }) => {
                             <span className="stat-value">3-16 yrs</span>
                         </div>
                     </div>
-
-                    <div className="education-section info-section">
-                        <h3>Education Support</h3>
-                        <ul className="features-list">
-                            <li>School Enrollment Assistance</li>
-                            <li>After-school Tutoring</li>
-                            <li>Computer Training</li>
-                            <li>Skill Development Programs</li>
-                            <li>Career Guidance</li>
-                        </ul>
-                    </div>
                 </div>
                 <div className="facility-footer">
                     <button 
@@ -172,7 +171,7 @@ const OrphanagesPage = ({ onDonate }) => {
                         onClick={(e) => handleDonateClick(e, facility)}
                         type="button"
                     >
-                        Donate
+                        💝 Donate Now
                     </button>
                 </div>
             </div>

@@ -11,7 +11,8 @@ const Register = () => {
         password: '',
         confirmPassword: '',
         phone: '',
-        address: ''
+        address: '',
+        role: 'donor' // Add role field with default value
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -29,38 +30,53 @@ const Register = () => {
         }
 
         try {
-            const registerData = {
-                name: formData.name.trim(),
-                email: formData.email.trim(),
-                password: formData.password,
-                phone: formData.phone.trim(),
-                address: formData.address.trim()
-            };
-
-            console.log('Sending registration data:', registerData); // Debug log
-
-            const response = await api.post('/auth/register', registerData);
-
-            console.log('Registration response:', response.data); // Debug log
-
-            if (response.data) {
-                // Store complete user data with all fields
-                const userData = {
-                    id: response.data._id || response.data.id,
-                    name: registerData.name,
-                    email: registerData.email,
-                    phone: registerData.phone,
-                    address: registerData.address,
-                    donations: [] // Initialize empty donations array
+            if (formData.role === 'donor') {
+                // Handle donor registration
+                const registerData = {
+                    name: formData.name.trim(),
+                    email: formData.email.trim(),
+                    password: formData.password,
+                    phone: formData.phone.trim(),
+                    address: formData.address.trim()
                 };
 
-                // Store in localStorage
-                localStorage.setItem('userData', JSON.stringify(userData));
-                console.log('Stored user data:', userData); // Debug log
+                console.log('Sending donor registration data:', registerData);
 
-                // Show success message and redirect
-                alert('Registration successful! Please login to continue.');
-                navigate('/login');
+                const response = await api.post('/auth/register', registerData);
+
+                console.log('Registration response:', response.data);
+
+                if (response.data) {
+                    // Store complete user data with all fields
+                    const userData = {
+                        id: response.data._id || response.data.id,
+                        name: registerData.name,
+                        email: registerData.email,
+                        phone: registerData.phone,
+                        address: registerData.address,
+                        donations: [] // Initialize empty donations array
+                    };
+
+                    // Store in localStorage
+                    localStorage.setItem('userData', JSON.stringify(userData));
+                    console.log('Stored user data:', userData);
+
+                    // Show success message and redirect to home page
+                    alert('Registration successful! Welcome to our donation platform.');
+                    navigate('/');
+                }
+            } else if (formData.role === 'transporter') {
+                // Handle transporter registration - redirect to transporter register page
+                // Store basic info in localStorage for transporter registration
+                const transporterData = {
+                    name: formData.name.trim(),
+                    email: formData.email.trim(),
+                    phone: formData.phone.trim(),
+                    address: formData.address.trim()
+                };
+                
+                localStorage.setItem('transporterBasicInfo', JSON.stringify(transporterData));
+                navigate('/transporter-register');
             }
         } catch (err) {
             console.error('Registration error:', err);
@@ -89,6 +105,30 @@ const Register = () => {
                     <form onSubmit={handleSubmit} className="auth-form">
                         {error && <div className="error-message">{error}</div>}
                         
+                        <div className="form-group">
+                            <label htmlFor="role">Register as</label>
+                            <div className="input-group">
+                                <select
+                                    id="role"
+                                    name="role"
+                                    value={formData.role}
+                                    onChange={(e) => setFormData({...formData, role: e.target.value})}
+                                    required
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px',
+                                        border: '1px solid #ddd',
+                                        borderRadius: '4px',
+                                        fontSize: '16px',
+                                        backgroundColor: '#fff'
+                                    }}
+                                >
+                                    <option value="donor">Donor</option>
+                                    <option value="transporter">Transporter</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div className="form-group">
                             <label htmlFor="name">Full Name</label>
                             <div className="input-group">
@@ -173,7 +213,7 @@ const Register = () => {
                         </div>
 
                         <button type="submit" className="submit-btn" disabled={loading}>
-                            {loading ? 'Creating Account...' : 'Register'}
+                            {loading ? 'Creating Account...' : `Register as ${formData.role === 'donor' ? 'Donor' : 'Transporter'}`}
                         </button>
 
                         <p className="auth-redirect">

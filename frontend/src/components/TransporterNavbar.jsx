@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 
 export const SidebarContext = createContext();
 
-const Navbar = ({ onMenuClick }) => {
+const TransporterNavbar = ({ onMenuClick }) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [sidebarActive, setSidebarActive] = useState(false);
@@ -26,7 +26,7 @@ const Navbar = ({ onMenuClick }) => {
 
     return (
         <>
-            <nav className="navbar" style={{ flexWrap: "wrap", padding: "0.5rem 1.5rem" }}>
+            <nav className="navbar">
                 {/* Left side - Brand and Menu */}
                 <div className="nav-left">
                     <button className="menu-btn" onClick={onMenuClick}>
@@ -36,72 +36,37 @@ const Navbar = ({ onMenuClick }) => {
                 </div>
 
                 {/* Center - Navigation Links */}
-                <div className="nav-center" style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "0.5rem",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    minWidth: 0,
-                    flex: 1
-                }}>
+                <div className="nav-center">
                     <button 
-                        onClick={() => navigate('/home')} 
+                        onClick={() => navigate('/transporter-dashboard')} 
                         className="nav-link-btn"
-                        style={{ flex: "1 1 120px", minWidth: 90 }}
                     >
-                        Home
+                        Dashboard
                     </button>
                     <button 
-                        onClick={() => navigate('/orphanages')} 
+                        onClick={() => navigate('/transport-requests')} 
                         className="nav-link-btn"
-                        style={{ flex: "1 1 120px", minWidth: 90 }}
                     >
-                        Orphanages
+                        Transport Requests
                     </button>
                     <button 
-                        onClick={() => navigate('/oldagehomes')} 
+                        onClick={() => navigate('/transporter-about')} 
                         className="nav-link-btn"
-                        style={{ flex: "1 1 120px", minWidth: 90 }}
-                    >
-                        Old Age Homes
-                    </button>
-                    <button 
-                        onClick={() => navigate('/about')} 
-                        className="nav-link-btn"
-                        style={{ flex: "1 1 120px", minWidth: 90 }}
                     >
                         About
                     </button>
                 </div>
 
-                {/* Right side - Action Buttons and Profile */}
-                <div className="nav-right" style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "0.5rem",
-                    alignItems: "center"
-                }}>
-                    <button
-                        className="action-btn donate-btn"
-                        style={{ flex: "1 1 120px", minWidth: 90 }}
-                        onClick={() => {
-                            sessionStorage.removeItem("selectedFacility");
-                            setSidebarActive(true);
-                        }}
-                    >
-                        Donate
-                    </button>
+                {/* Right side - Transporter Specific Actions */}
+                <div className="nav-right">
                     <button
                         className="action-btn"
-                        style={{ flex: "1 1 120px", minWidth: 90 }}
                         onClick={() => navigate('/transport-requests')}
                     >
                         Transport Requests
                     </button>
                     <button
                         className="action-btn"
-                        style={{ flex: "1 1 120px", minWidth: 90 }}
                         onClick={() => navigate('/profile')}
                     >
                         Profile
@@ -115,4 +80,4 @@ const Navbar = ({ onMenuClick }) => {
     );
 };
 
-export default Navbar;
+export default TransporterNavbar; 

@@ -12,6 +12,9 @@ export default defineConfig({
   publicDir: 'public',
   server: {
     port: 5173,
-    open: true
-  }
+    open: true,
+    proxy: {
+      '/donations': 'http://localhost:5000',
+    },
+  },
 });

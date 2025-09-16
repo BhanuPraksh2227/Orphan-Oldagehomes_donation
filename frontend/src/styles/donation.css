@@ -109,8 +109,7 @@ div[class*="health"] .donation-form {
     --color4: transparent;
 }
 
-/* Form elements styling for better visibility */
-/* Form Group Styles */
+/* Form Group Styles with Different Colors */
 .form-group {
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(8px);
@@ -119,21 +118,250 @@ div[class*="health"] .donation-form {
     border-radius: 12px;
     margin-bottom: 1.25rem;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Label Styles */
+/* Different colors for each form group */
+.form-group:nth-child(1) {
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(255, 160, 122, 0.3));
+    border-color: rgba(255, 182, 193, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 182, 193, 0.2);
+}
+
+.form-group:nth-child(1):hover {
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.4), rgba(255, 160, 122, 0.4));
+    border-color: rgba(255, 182, 193, 0.6);
+    box-shadow: 0 6px 20px rgba(255, 182, 193, 0.3);
+    transform: translateY(-2px);
+}
+
+.form-group:nth-child(2) {
+    background: linear-gradient(135deg, rgba(152, 251, 152, 0.3), rgba(144, 238, 144, 0.3));
+    border-color: rgba(152, 251, 152, 0.4);
+    box-shadow: 0 4px 15px rgba(152, 251, 152, 0.2);
+}
+
+.form-group:nth-child(2):hover {
+    background: linear-gradient(135deg, rgba(152, 251, 152, 0.4), rgba(144, 238, 144, 0.4));
+    border-color: rgba(152, 251, 152, 0.6);
+    box-shadow: 0 6px 20px rgba(152, 251, 152, 0.3);
+    transform: translateY(-2px);
+}
+
+.form-group:nth-child(3) {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(255, 99, 71, 0.3));
+    border-color: rgba(255, 107, 107, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+}
+
+.form-group:nth-child(3):hover {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.4), rgba(255, 99, 71, 0.4));
+    border-color: rgba(255, 107, 107, 0.6);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+    transform: translateY(-2px);
+}
+
+.form-group:nth-child(4) {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 193, 7, 0.3));
+    border-color: rgba(255, 215, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.form-group:nth-child(4):hover {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 193, 7, 0.4));
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.form-group:nth-child(5) {
+    background: linear-gradient(135deg, rgba(135, 206, 235, 0.3), rgba(100, 149, 237, 0.3));
+    border-color: rgba(135, 206, 235, 0.4);
+    box-shadow: 0 4px 15px rgba(135, 206, 235, 0.2);
+}
+
+.form-group:nth-child(5):hover {
+    background: linear-gradient(135deg, rgba(135, 206, 235, 0.4), rgba(100, 149, 237, 0.4));
+    border-color: rgba(135, 206, 235, 0.6);
+    box-shadow: 0 6px 20px rgba(135, 206, 235, 0.3);
+    transform: translateY(-2px);
+}
+
+.form-group:nth-child(6) {
+    background: linear-gradient(135deg, rgba(221, 160, 221, 0.3), rgba(186, 85, 211, 0.3));
+    border-color: rgba(221, 160, 221, 0.4);
+    box-shadow: 0 4px 15px rgba(221, 160, 221, 0.2);
+}
+
+.form-group:nth-child(6):hover {
+    background: linear-gradient(135deg, rgba(221, 160, 221, 0.4), rgba(186, 85, 211, 0.4));
+    border-color: rgba(221, 160, 221, 0.6);
+    box-shadow: 0 6px 20px rgba(221, 160, 221, 0.3);
+    transform: translateY(-2px);
+}
+
+.form-group:nth-child(7) {
+    background: linear-gradient(135deg, rgba(255, 165, 0, 0.3), rgba(255, 140, 0, 0.3));
+    border-color: rgba(255, 165, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.2);
+}
+
+.form-group:nth-child(7):hover {
+    background: linear-gradient(135deg, rgba(255, 165, 0, 0.4), rgba(255, 140, 0, 0.4));
+    border-color: rgba(255, 165, 0, 0.6);
+    box-shadow: 0 6px 20px rgba(255, 165, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.form-group:nth-child(8) {
+    background: linear-gradient(135deg, rgba(240, 128, 128, 0.3), rgba(233, 150, 122, 0.3));
+    border-color: rgba(240, 128, 128, 0.4);
+    box-shadow: 0 4px 15px rgba(240, 128, 128, 0.2);
+}
+
+.form-group:nth-child(8):hover {
+    background: linear-gradient(135deg, rgba(240, 128, 128, 0.4), rgba(233, 150, 122, 0.4));
+    border-color: rgba(240, 128, 128, 0.6);
+    box-shadow: 0 6px 20px rgba(240, 128, 128, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Enhanced Label Styles with Better Visibility */
 .form-group label {
     display: block;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 0.75rem;
     color: #2d3748;
     letter-spacing: 0.5px;
     text-transform: capitalize;
     transition: color 0.3s ease;
+    position: relative;
+    padding-left: 15px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Input and Textarea Styles */
+.form-group label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.form-group:focus-within label::before {
+    opacity: 1;
+    animation: labelDot 0.6s ease;
+}
+
+/* Color-coordinated labels with better visibility */
+.form-group:nth-child(1) label {
+    color: #d63384;
+    background: rgba(255, 182, 193, 0.9);
+    border-color: rgba(255, 182, 193, 0.5);
+}
+
+.form-group:nth-child(1) label::before {
+    background: #d63384;
+}
+
+.form-group:nth-child(2) label {
+    color: #198754;
+    background: rgba(152, 251, 152, 0.9);
+    border-color: rgba(152, 251, 152, 0.5);
+}
+
+.form-group:nth-child(2) label::before {
+    background: #198754;
+}
+
+.form-group:nth-child(3) label {
+    color: #dc3545;
+    background: rgba(255, 107, 107, 0.9);
+    border-color: rgba(255, 107, 107, 0.5);
+}
+
+.form-group:nth-child(3) label::before {
+    background: #dc3545;
+}
+
+.form-group:nth-child(4) label {
+    color: #b8860b;
+    background: rgba(255, 215, 0, 0.9);
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+.form-group:nth-child(4) label::before {
+    background: #b8860b;
+}
+
+.form-group:nth-child(5) label {
+    color: #0d6efd;
+    background: rgba(135, 206, 235, 0.9);
+    border-color: rgba(135, 206, 235, 0.5);
+}
+
+.form-group:nth-child(5) label::before {
+    background: #0d6efd;
+}
+
+.form-group:nth-child(6) label {
+    color: #6f42c1;
+    background: rgba(221, 160, 221, 0.9);
+    border-color: rgba(221, 160, 221, 0.5);
+}
+
+.form-group:nth-child(6) label::before {
+    background: #6f42c1;
+}
+
+.form-group:nth-child(7) label {
+    color: #fd7e14;
+    background: rgba(255, 165, 0, 0.9);
+    border-color: rgba(255, 165, 0, 0.5);
+}
+
+.form-group:nth-child(7) label::before {
+    background: #fd7e14;
+}
+
+.form-group:nth-child(8) label {
+    color: #e83e8c;
+    background: rgba(240, 128, 128, 0.9);
+    border-color: rgba(240, 128, 128, 0.5);
+}
+
+.form-group:nth-child(8) label::before {
+    background: #e83e8c;
+}
+
+/* Focus states for labels */
+.form-group:focus-within label {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Required field indicator */
+.form-group label.required::after {
+    content: '*';
+    color: #e53e3e;
+    margin-left: 4px;
+    font-weight: 900;
+    animation: requiredPulse 2s ease-in-out infinite;
+}
+
+/* Enhanced Input and Textarea Styles with Better Visibility */
 .form-group input,
 .form-group textarea {
     width: 100%;
@@ -143,28 +371,31 @@ div[class*="health"] .donation-form {
     font-size: 1rem;
     line-height: 1.5;
     color: #2d3748;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
     font-family: inherit;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Placeholder Styles */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
     color: #4a5568;
     opacity: 0.7;
+    font-style: italic;
 }
 
-/* Focus States */
+/* Focus States with Better Visibility */
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: rgba(255, 255, 255, 0.6);
-    background: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
 }
 
-/* Select Element Styles */
+/* Enhanced Select Element Styles */
 .form-group select {
     width: 100%;
     padding: 0.875rem 1rem;
@@ -173,7 +404,7 @@ div[class*="health"] .donation-form {
     font-size: 1rem;
     line-height: 1.5;
     color: #2d3748;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.8);
     cursor: pointer;
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232d3748' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -181,30 +412,71 @@ div[class*="health"] .donation-form {
     background-position: right 1rem center;
     background-size: 1em;
     font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Submit Button Styles */
+.form-group select:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Enhanced Submit Button with Rainbow Gradient */
 .submit-btn {
     width: 100%;
     padding: 1rem 2rem;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     font-size: 1.1rem;
-    font-weight: 600;
-    color: #2d3748;
-    background: rgba(255, 255, 255, 0.4);
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, #d63384 0%, #198754 20%, #dc3545 40%, #ffc107 60%, #0d6efd 80%, #6f42c1 100%);
+    background-size: 300% 300%;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    letter-spacing: 1.5px;
+    margin-top: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    animation: buttonGlow 2s ease-in-out infinite;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
 }
 
 .submit-btn:hover {
-    background: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    background-size: 200% 200%;
+    animation: buttonPulse 0.6s ease;
+}
+
+/* Animations */
+@keyframes buttonGlow {
+    0%, 100% { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); }
+    50% { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+}
+
+@keyframes buttonPulse {
+    0% { transform: translateY(-3px) scale(1.02); }
+    50% { transform: translateY(-5px) scale(1.05); }
+    100% { transform: translateY(-3px) scale(1.02); }
 }
 
 /* Required Field Indicator */
@@ -230,6 +502,18 @@ div[class*="health"] .donation-form {
     background: rgba(255, 255, 255, 0.4);
 }
 
+/* Animations */
+@keyframes labelDot {
+    0% { transform: translateY(-50%) scale(0); }
+    50% { transform: translateY(-50%) scale(1.2); }
+    100% { transform: translateY(-50%) scale(1); }
+}
+
+@keyframes requiredPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
 /* Updated responsive styles */
 @media (max-width: 768px) {
     .donation-page {
@@ -253,5 +537,19 @@ div[class*="health"] .donation-form {
     .form-group textarea,
     .submit-btn {
         font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .form-group label {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 0.9rem;
+        padding: 0.7rem 0.8rem;
     }
 }

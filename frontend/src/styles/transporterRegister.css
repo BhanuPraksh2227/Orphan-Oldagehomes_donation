@@ -1,0 +1,62 @@
+/* Create this new file for TransporterRegister */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* TransporterRegister - Golden Theme */
+.transporter-register-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f7971e 0%, #ffd200 25%, #ffd200 50%, #f7971e 75%, #ffd200 100%);
+  background-size: 400% 400%;
+  animation: goldenShift 14s ease-in-out infinite;
+  padding: 2rem;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+}
+
+.transporter-register-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.2)"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+  pointer-events: none;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.form-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 800;
+  font-style: italic;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.form-input {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+}
+
+.form-button {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  font-style: italic;
+}
+
+@keyframes goldenShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+} 

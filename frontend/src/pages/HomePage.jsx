@@ -2,6 +2,11 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/home.css";
 
+const actionCardColors = [
+  "linear-gradient(135deg, #ffb347 0%, #ffcc33 100%)", // Orphanages - yellow/orange
+  "linear-gradient(135deg, #43cea2 0%, #185a9d 100%)", // Old Age Homes - teal/blue
+];
+
 const HomePage = () => {
     const navigate = useNavigate();
 
@@ -16,14 +21,19 @@ const HomePage = () => {
     const user = JSON.parse(localStorage.getItem("user") || "{}");
 
     return (
-        <div className="home-container">
-            <header className="home-header">
-                <h1>Welcome, {user.name}!</h1>
+        <div className="home-container animated-bg">
+            <header className="home-header animated-fadein">
+                <h1>
+                  <span className="gradient-text">Welcome, {user.name}!</span>
+                </h1>
                 <p>Together we can make a difference</p>
             </header>
 
             <section className="quick-actions">
-                <div className="action-card">
+                <div
+                  className="action-card animated-slidein"
+                  style={{ background: actionCardColors[0], animationDelay: "0.1s" }}
+                >
                     <h3>Orphanages</h3>
                     <p>View and support orphanages</p>
                     <button onClick={() => navigate("/orphanages")}>
@@ -31,7 +41,10 @@ const HomePage = () => {
                     </button>
                 </div>
 
-                <div className="action-card">
+                <div
+                  className="action-card animated-slidein"
+                  style={{ background: actionCardColors[1], animationDelay: "0.2s" }}
+                >
                     <h3>Old Age Homes</h3>
                     <p>View and support old age homes</p>
                     <button onClick={() => navigate("/oldagehomes")}>
@@ -40,114 +53,82 @@ const HomePage = () => {
                 </div>
             </section>
 
-            <section className="hero-section">
+            <section className="hero-section animated-zoom">
                 <div className="hero-content">
-                    <h1>Making a Difference Together</h1>
+                    <h1 className="rainbow-text">Making a Difference Together</h1>
                     <p>
                         Join us in supporting orphanages and old age homes through
                         meaningful donations
                     </p>
-                    <Link to="/about" className="learn-more">Learn More</Link>
+                    <Link to="/about" className="learn-more fancy-btn">Learn More</Link>
                 </div>
             </section>
 
             <section className="donation-categories">
-                <h2 className="section-title">Ways to Help</h2>
+                <h2 className="section-title animated-fadein">Ways to Help</h2>
                 <div className="category-grid">
-                    {/* First card - Making a Difference Together */}
-                    <div className="category-card" style={{ "--index": "0" }}>
-                        <div className="category-image">
-                            <img src="/images/donate.png" alt="Making a Difference" />
-                            <div className="content-overlay">
-                                <h3>Making a Difference Together</h3>
-                                <p>
-                                    Join us in creating positive change through your
-                                    generous support
-                                </p>
+                    {[
+                        {
+                            img: "/images/donate.png",
+                            title: "Making a Difference Together",
+                            desc: "Join us in creating positive change through your generous support",
+                            color: "linear-gradient(135deg, #ff6a00 0%, #ee0979 100%)"
+                        },
+                        {
+                            img: "/images/money.jpg",
+                            title: "Money Donation",
+                            desc: "Support through financial contributions for essential needs",
+                            color: "linear-gradient(135deg, #43cea2 0%, #185a9d 100%)"
+                        },
+                        {
+                            img: "/images/donat3.jpg",
+                            title: "Food Donation",
+                            desc: "Provide nutritious meals and groceries to ensure no one goes hungry",
+                            color: "linear-gradient(135deg, #f7971e 0%, #ffd200 100%)"
+                        },
+                        {
+                            img: "/images/clothesd.jpg",
+                            title: "Clothes Donation",
+                            desc: "Share warmth and dignity through clothing donations",
+                            color: "linear-gradient(135deg, #00c3ff 0%, #ffff1c 100%)"
+                        },
+                        {
+                            img: "/images/booksdon.webp",
+                            title: "Books Donation",
+                            desc: "Enable education and learning through book donations",
+                            color: "linear-gradient(135deg, #fc00ff 0%, #00dbde 100%)"
+                        },
+                        {
+                            img: "/images/health.jpg",
+                            title: "Health Donation",
+                            desc: "Support medical needs and healthcare essentials",
+                            color: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)"
+                        },
+                        {
+                            img: "/images/maini.jpg",
+                            title: "Volunteer",
+                            desc: "Join our team of dedicated volunteers and make a direct impact",
+                            color: "linear-gradient(135deg, #f953c6 0%, #b91d73 100%)"
+                        }
+                    ].map((cat, idx) => (
+                        <div
+                          className="category-card animated-pop"
+                          key={cat.title}
+                          style={{
+                            "--index": idx,
+                            background: cat.color,
+                            animationDelay: `${0.2 + idx * 0.1}s`
+                          }}
+                        >
+                            <div className="category-image">
+                                <img src={cat.img} alt={cat.title} />
+                                <div className="content-overlay">
+                                    <h3>{cat.title}</h3>
+                                    <p>{cat.desc}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    {/* Second card - Money Donation */}
-                    <div className="category-card" style={{ "--index": "1" }}>
-                        <div className="category-image">
-                            <img src="/images/money.jpg" alt="Money Donation" />
-                            <div className="content-overlay">
-                                <h3>Money Donation</h3>
-                                <p>
-                                    Support through financial contributions for essential
-                                    needs
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Third card - Food Donation */}
-                    <div className="category-card" style={{ "--index": "2" }}>
-                        <div className="category-image">
-                            <img src="/images/donat3.jpg" alt="Food Donation" />
-                            <div className="content-overlay">
-                                <h3>Food Donation</h3>
-                                <p>
-                                    Provide nutritious meals and groceries to ensure no one
-                                    goes hungry
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Fourth card - Clothes Donation */}
-                    <div className="category-card" style={{ "--index": "3" }}>
-                        <div className="category-image">
-                            <img src="/images/clothesd.jpg" alt="Clothes Donation" />
-                            <div className="content-overlay">
-                                <h3>Clothes Donation</h3>
-                                <p>
-                                    Share warmth and dignity through clothing donations
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Fifth card - Books Donation */}
-                    <div className="category-card" style={{ "--index": "4" }}>
-                        <div className="category-image">
-                            <img src="/images/booksdon.webp" alt="Books Donation" />
-                            <div className="content-overlay">
-                                <h3>Books Donation</h3>
-                                <p>
-                                    Enable education and learning through book donations
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Sixth card - Health Donation */}
-                    <div className="category-card" style={{ "--index": "5" }}>
-                        <div className="category-image">
-                            <img src="/images/health.jpg" alt="Health Donation" />
-                            <div className="content-overlay">
-                                <h3>Health Donation</h3>
-                                <p>
-                                    Support medical needs and healthcare essentials
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Seventh card - Volunteer */}
-                    <div className="category-card" style={{ "--index": "6" }}>
-                        <div className="category-image">
-                            <img src="/images/maini.jpg" alt="Volunteer" />
-                            <div className="content-overlay">
-                                <h3>Volunteer</h3>
-                                <p>
-                                    Join our team of dedicated volunteers and make a direct
-                                    impact
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </section>
         </div>
