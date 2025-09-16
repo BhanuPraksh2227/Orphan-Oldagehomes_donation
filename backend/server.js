@@ -16,7 +16,7 @@ const transportersRoutes = require('./routes/transportersRoutes');
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
-  "https://your-production-domain.com"
+  "https://orphan-oldagehomes-donation.vercel.app"
 ];
 
 app.use(cors({
