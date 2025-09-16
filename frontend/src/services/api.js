@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000', // Removed /api prefix
+    baseURL: 'https://orphan-oldagehomes-donation-1.onrender.com', // Removed /api prefix
     headers: {
         'Content-Type': 'application/json'
     }
