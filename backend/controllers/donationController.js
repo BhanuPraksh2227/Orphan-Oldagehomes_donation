@@ -42,11 +42,13 @@ exports.createDonation = async (req, res) => {
 
         const donation = new Donation({
             donorName,
-            phone,
+            donorLocation: req.body.donorLocation || pickupAddress || '',
             type: donationType,
             quantity: parseInt(quantity) || 0,
             pickupAddress,
             facility: validFacilityId,
+            facilityName: req.body.facilityName || '',
+            facilityAddress: req.body.facilityAddress || '',
             status: 'pending',
             ...req.body
         });
